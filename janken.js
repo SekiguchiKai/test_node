@@ -32,6 +32,7 @@ exports.janken = function janken(c, s) {
     return result;
 }
 
+//テストのための仕掛け
 // テスト時に任意のc = クライアントの打ち手、 s = サーバの打ち手を引数にすることができる
 exports.test = function test(c, s) {
     var jk = require("./janken.js")
@@ -40,7 +41,7 @@ exports.test = function test(c, s) {
     var tempoCU = c;
     var tempoSU = s;
 
-    // test()から、janken(){}呼ぶ出し
+    // test()から、janken(){}を呼び出し
     var result = jk.janken(tempoCU, tempoSU);
 
     return result;
