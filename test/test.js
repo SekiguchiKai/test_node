@@ -51,9 +51,7 @@ describe('じゃんけんアルゴリズム', function () {
     });
 
     it('クライアントをグー固定で1000回対戦してみて、勝ち・負け・引き分け のそれぞれが最低1回以上発生するかというテスト', function () {
-        for (var i = 0; i < 1001; i++) {
-            assert.equal(jk.test2(0, jk.serverUchiteGenerator()), "合格");
-        }
+        assert.equal(jk.test2(0, jk.serverUchiteGenerator()), "合格");
 
     });
 
