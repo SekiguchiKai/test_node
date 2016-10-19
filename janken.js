@@ -46,3 +46,26 @@ exports.test = function test(c, s) {
 
     return result;
 }
+
+exports.test2 = function test2(s) {
+    var jk = require("./janken.js")
+    //グーで固定
+    var tempoCU = 0;
+    var tempoSU = s;
+
+    var resultArray = new Array(1000);
+    for (var i; i < 1001; i++) {
+        // test()から、janken(){}を呼び出し
+        var resultArray = jk.janken(tempoCU, tempoSU);
+    }
+
+    var result;
+    if (resultArray.indexOf("君の勝ちだ！") != 0 && resultArray.indexOf("引き分けだ！" != 0) && resultArray.indexOf("君の負けだ！") != 0) {
+        result = "合格";
+    } else {
+        result = "不合格";
+    }
+
+    return result;
+
+}
