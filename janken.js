@@ -31,7 +31,7 @@ exports.janken = function janken(c, s = Math.floor(Math.random() * (2 - 0 + 1)) 
     return result;
 }
 
-//確認のため一時的に
+// 確認のため一時的に
 var jk = require("./janken.js")
 jk.janken();
 
