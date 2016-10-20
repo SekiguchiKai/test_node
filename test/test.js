@@ -5,7 +5,6 @@
 var chai = require('chai');
 var assert = chai.assert;
 
-
 // webServer.jsをmoduleとして使用するために
 var jk = require('../janken.js');
 
@@ -51,12 +50,31 @@ describe('じゃんけんアルゴリズム', function () {
     });
 
     it('クライアントをグー固定で1000回対戦してみて、勝ち・負け・引き分け のそれぞれが最低1回以上発生するかというテスト', function () {
+        //クロームでのデバッグのために、timeoutの期限を伸ばす
+        this.timeout(999999999999);
         // var resultArray = new Array(1000);
-        for (var i; i < 1001; i++) {
+        var result = [];
+        for (var i = 0; i < 1001; i++) {
             // クライアントの引数をグーで固定し、janken()を1000回呼び出し
-            assert.equal(jk.test(0), resultArray.indexOf("君の勝ちだ！") != 0 && resultArray.indexOf("引き分けだ！" != 0) && resultArray.indexOf("君の負けだ！") != 0);
+            result.push(jk.test(0));
         }
 
+        var aa = {
+            bb: function aa(result) {
+                var result = result;
+                var answer = "";
+
+                if ((result.indexOf("君の勝ちだ！") >= 0) && (result.indexOf("君の負けだ！") >= 0) && (result.indexOf("引き分けだ！") >= 0)) {
+                    answer = "合格";
+                } else {
+                    answer = "不合格";
+                }
+
+                return answer;
+            }
+
+        }
+        assert.equal(aa.bb(result), "合格");
     });
 
 });
