@@ -1,23 +1,18 @@
-var clientUchite;
-var serverUchite;
-
-// クライアントからのpostを受け取って、そのまま返す（テストのために作成）
-exports.clientUchiteGenerator = function clientUchiteGenerator(c) {
-    return clientUchite = c;
-}
-
-// サーバ側の打ち手をランダムに決定
-exports.serverUchiteGenerator = function serverUchiteGenerator() {
-    // 乱数を発生させる
-    return serverUchite = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
-}
-
 // じゃんけんのアルゴリズム部分（勝敗を決定してresultを返す）
-// c = クライアントの打ち手、 s = サーバの打ち手
-exports.janken = function janken(c, s) {
+/*c = クライアントの打ち手、 s = サーバの打ち手（デフォルト値）
+cは、クライアントから送られてくる、sは、デフォルト値を使うこととし、テストの場合のみ変数を与える
+*/
+exports.janken = function janken(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
 
-    clientUchite = c;
-    serverUchite = s;
+    //クライアントの打ち手に引数を代入
+    var clientUchite = c;
+
+    //サーバの打ち手を代入に引数を代入
+    var serverUchite = s;
+
+    //じゃんけんの結果を格納する変数を宣言
+    var result;
+
 
     // アルゴリズム
     if ((clientUchite === 0 && serverUchite === 1) || (clientUchite === 1 && serverUchite === 2) || (clientUchite === 2 && serverUchite === 0)) {
@@ -29,8 +24,15 @@ exports.janken = function janken(c, s) {
     else if (clientUchite === serverUchite) {
         result = "引き分けだ！";
     }
+
+    console.log(result);
     return result;
 }
+//確認のため一時的に
+var jk = require("./janken.js")
+jk.janken();
+
+
 
 // テストのための仕掛け
 // テスト時に任意のc = クライアントの打ち手、 s = サーバの打ち手を引数にすることができる
@@ -46,6 +48,7 @@ exports.test = function test(c, s) {
 
     return result;
 }
+
 
 exports.test2 = function test2(s) {
     var jk = require("./janken.js")
