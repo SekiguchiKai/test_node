@@ -50,7 +50,7 @@ describe('じゃんけんアルゴリズム', function () {
     });
 
     it('クライアントをグー固定で1000回対戦してみて、勝ち・負け・引き分け のそれぞれが最低1回以上発生するかというテスト', function () {
-        //クロームでのデバッグのために、timeoutの期限を伸ばす
+        // クロームでのデバッグのために、timeoutの期限を伸ばす
         this.timeout(999999999999);
         // var resultArray = new Array(1000);
         var result = [];
