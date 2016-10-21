@@ -4,7 +4,7 @@ cは、クライアントから送られてくる、sは、デフォルト値を
 */
 
 
-exports.janken = function janken(c = 1, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
+exports.judgeResult = function judgeResult(c = 1, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
 
     // クライアントの打ち手に引数を代入
     var clientUchite = c;
@@ -37,7 +37,7 @@ jk.janken();*/
 
 // テストのための仕掛け
 // テスト時に任意のc = クライアントの打ち手、 s = サーバの打ち手を引数にすることができる
-exports.test = function test(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
+exports.judgeResultTest = function judgeResultTest(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
     var jk = require("./janken.js")
 
     // 引数を変数に代入
@@ -48,7 +48,7 @@ exports.test = function test(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0)
     var resultArray;
 
     // じゃんけんの結果をresultArray（配列）に代入
-    resultArray = (jk.janken(tempoCU, tempoSU));
+    resultArray = (jk.judgeResult(tempoCU, tempoSU));
 
     return resultArray;
 
