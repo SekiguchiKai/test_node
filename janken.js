@@ -38,13 +38,13 @@ jk.janken();*/
 // テストのための仕掛け
 // テスト時に任意のc = クライアントの打ち手、 s = サーバの打ち手を引数にすることができる
 exports.judgeResultTest = function judgeResultTest(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
-    var jk = require("./janken.js")
+    //var jk = require("./janken.js")
 
     // 配列結果を格納する配列を作成
     var resultArray;
 
     // じゃんけんの結果をresultArray（配列）に代入
-    resultArray = (jk.judgeResult(c, s));
+    resultArray = (/*jk.*/judgeResult(c, s));
 
     return resultArray;
 
