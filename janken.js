@@ -1,53 +1,38 @@
-// じゃんけんのアルゴリズム部分（勝敗を決定してresultを返す）
-/*c = クライアントの打ち手、 s = サーバの打ち手（デフォルト値）
-cは、クライアントから送られてくる、sは、デフォルト値を使うこととし、テストの場合のみ変数を与える
-*/
+//HTMLなどのレスポンス資源を生成し、クライアントにレスポンスを返す
 
-//クライアントとサーバのじゃんけんの結果を判定する関数
-exports.judgeResult = function judgeResult(c = 1, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
+var fs = require('fs');
+var webserver = require("./webServer.js");
 
-    // クライアントの打ち手に引数を代入
-    var clientUchite = c;
+//レスポンスのための資源を生成し、クライアントに返す 
+exports.responseGenerator = function responseGenerator(res, resource, content_Type) {
 
-    // サーバの打ち手を代入に引数を代入
-    var serverUchite = s;
+    console.log("generateResourceが呼び出されました。レスポンスのための資源を生成します");
 
-    // じゃんけんの結果を格納する変数を宣言
-    var result;
+    // HTML読み込み =>読み込まれたら、コールバックでレスポンスまで行う
+    fs.readFile(__dirname + resource, 'utf-8', function (err, data) {
 
+        // エラー処理
+        if (err) {
+            // レスポンスヘッダを返す=>ステータスコード（e.g.200）みたいなやつ
+            // 引数,1:ステータスコード、2::ステータスメッセージ
+            // HTTPレスポンスヘッダを出力する
+            res.writeHead(404, {
+                'Content-Type': 'text/plain'
+            });
+            // HTTPレスポンスボディを出力する
+            res.write("Sorry we can not find this file");
+            return res.end("access Error");
+        } else {
+            // 正常に接続された時のパターン
+            // HTTPレスポンスヘッダを出力する
+            res.writeHead(200, {
+                'content-Type': content_Type      //'text/html'などを期待
+            });
+            // HTTPレスポンスボディを出力する
+            res.write(data);
+            res.end("HTML file has already sent to browser");
+        };
 
-    // アルゴリズム
-    if ((clientUchite === 0 && serverUchite === 1) || (clientUchite === 1 && serverUchite === 2) || (clientUchite === 2 && serverUchite === 0)) {
-        result = "君の勝ちだ！";
-    }
-    else if ((clientUchite === 1 && serverUchite === 0) || (clientUchite === 2 && serverUchite === 1) || (clientUchite === 0 && serverUchite === 2)) {
-        result = "君の負けだ！";
-    }
-    else if (clientUchite === serverUchite) {
-        result = "引き分けだ！";
-    }
+    });
 
-    console.log(result);
-    return result;
-}
-
-
-// テストのための仕掛け
-// テスト時に任意のc = クライアントの打ち手、 s = サーバの打ち手を引数にすることができる
-exports.judgeResultTest = function judgeResultTest(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
-    var jk = require("./janken.js")
-
-    // 配列結果を格納する配列を作成
-    var resultArray;
-
-    // じゃんけんの結果をresultArray（配列）に代入
-    resultArray = (jk.judgeResult(c, s));
-
-    return resultArray;
-
-}
-
-
-
-
-
+};

@@ -4,12 +4,12 @@ var fs = require('fs');
 var webserver = require("./webServer.js");
 
 //レスポンスのための資源を生成し、クライアントに返す 
-exports.responseGenerator = function responseGenerator(res, resource, content_Type) {
+exports.responseGenerator = function responseGenerator(res) {
 
     console.log("generateResourceが呼び出されました。レスポンスのための資源を生成します");
 
     // HTML読み込み =>読み込まれたら、コールバックでレスポンスまで行う
-    fs.readFile(__dirname + resource, 'utf-8', function (err, data) {
+    fs.readFile(__dirname + '/template/index.html', 'utf-8', function (err, data) {
 
         // エラー処理
         if (err) {
@@ -26,7 +26,7 @@ exports.responseGenerator = function responseGenerator(res, resource, content_Ty
             // 正常に接続された時のパターン
             // HTTPレスポンスヘッダを出力する
             res.writeHead(200, {
-                'content-Type': content_Type      //'text/html'などを期待
+                'content-Type': 'text/html'      //'text/html'などを期待
             });
             // HTTPレスポンスボディを出力する
             res.write(data);
@@ -35,4 +35,4 @@ exports.responseGenerator = function responseGenerator(res, resource, content_Ty
 
     });
 
-};
+}; 
