@@ -40,15 +40,11 @@ jk.janken();*/
 exports.judgeResultTest = function judgeResultTest(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
     var jk = require("./janken.js")
 
-    // jk.judgeResult関数の引数を指定するためにjudgeResultTestの引数の関数を一時的に格納する変数
-    var temporaryClientUchite = c;
-    var temporaryServerUchite = s;
-
     // 配列結果を格納する配列を作成
     var resultArray;
 
     // じゃんけんの結果をresultArray（配列）に代入
-    resultArray = (jk.judgeResult(temporaryClientUchite, temporaryServerUchite));
+    resultArray = (jk.judgeResult(c, s));
 
     return resultArray;
 
