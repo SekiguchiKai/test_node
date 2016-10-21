@@ -3,7 +3,7 @@
 cは、クライアントから送られてくる、sは、デフォルト値を使うこととし、テストの場合のみ変数を与える
 */
 
-
+//クライアントとサーバのじゃんけんの結果を判定する関数
 exports.judgeResult = function judgeResult(c = 1, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
 
     // クライアントの打ち手に引数を代入
@@ -40,15 +40,15 @@ jk.janken();*/
 exports.judgeResultTest = function judgeResultTest(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
     var jk = require("./janken.js")
 
-    // 引数を変数に代入
-    var tempoCU = c;
-    var tempoSU = s;
+    // jk.judgeResult関数の引数を指定するためにjudgeResultTestの引数の関数を一時的に格納する変数
+    var temporaryClientUchite = c;
+    var temporaryServerUchite = s;
 
     // 配列結果を格納する配列を作成
     var resultArray;
 
     // じゃんけんの結果をresultArray（配列）に代入
-    resultArray = (jk.judgeResult(tempoCU, tempoSU));
+    resultArray = (jk.judgeResult(temporaryClientUchite, temporaryServerUchite));
 
     return resultArray;
 
