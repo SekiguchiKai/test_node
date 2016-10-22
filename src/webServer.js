@@ -38,7 +38,7 @@ exports.webserver = server.on('request', function (req, res) {
             // POSTリクエストのボディを格納する (POSTはリクエストのボディにパラメータが格納されるから)
             // POSTリクエストのボディを格納するための変数を宣言する
             var body = '';
-            //リクエストが来たら、そのパラメータをボディ(body)に格納する
+            // リクエストが来たら、そのパラメータをボディ(body)に格納する
             req.on('data', function (data) {
                 body += data;
             });
@@ -49,8 +49,9 @@ exports.webserver = server.on('request', function (req, res) {
                 console.log(POST);
 
                 // オブジェクトの値（ここでいうpostの値を取り出す。ここには、クライアントの打ち手が入っている）
-                return stContents = parseInt(POST.C_uchite);
                 console.log(stContents + 'POSTのリクエストが届きました');
+                return stContents = parseInt(POST.C_uchite);
+                
             });
         }
     }
