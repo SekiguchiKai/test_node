@@ -7,20 +7,20 @@ var request = require('request');
 var qs = require('querystring');
 var path = require("path");
 
-//janken.jsを呼び出すためにrequire
+// janken.jsを呼び出すためにrequire
 var jk = require("./janken.js");
-//responseGenerater.jsを呼び出すためにrequire
+// responseGenerater.jsを呼び出すためにrequire
 var rG = require("./responseGenerater.js");
-//ejsResponser.jsを呼び出すためにrequire
+// ejsResponser.jsを呼び出すためにrequire
 var ejR = require("./ejsResponser.js");
 
 
 // http.createServerがrequestされたら、
 exports.webserver = server.on('request', function (req, res) {
-    //クライアントから送られてきた打ち手を格納するための変数を宣言
+    // クライアントから送られてきた打ち手を格納するための変数を宣言
     var stContents;
 
-    //ここで、下の関数を呼び出す（引数にここの関数のreq, resのを渡す）
+    // ここで、下の関数を呼び出す（引数にここの関数のreq, resのを渡す）
 
     // ①parseHttpMethodを呼び出す
     stContents = parseHttpMethod(req, res);
@@ -69,14 +69,14 @@ exports.webserver = server.on('request', function (req, res) {
             // responseGenerater.jsのhtmlGeneratorを呼び出す
             // メモ：index.HTMLなど具体的なファイルはこちらから呼び出す
             // responseGenerater.jsでは、一般的な操作だけを定義し、同じような処理を繰り返させない
-            rG.responseGenerator(res, '../template/index.html', 'text/html'); //res, resource, content_Type
+            rG.responseGenerator(res, '../template/index.html', 'text/html'); // res, resource, content_Type
         } else if (uri === "/calcprocess") {
             // janken.jsのjudgeResultを呼び出し、その戻り値を格納
 
-            //stContentsを実験的に表示
+            // stContentsを実験的に表示
             console.log(stContents + '確認用');
             var afterJudgeValue, clientUchite, serverUchite = jk.judgeResult(stContents);
-            //確認用
+            // 確認用
             ここがうまくいってない
             console.log("ここ" + afterJudgeValue + clientUchite + serverUchite);
             // responseGenerater.jsにじゃんけんの結果を渡して、結果を反映させたHTMLを返してもらう
