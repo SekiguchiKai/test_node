@@ -77,7 +77,7 @@ exports.webserver = server.on('request', function (req, res) {
             console.log(stContents + '確認用');
             var afterJudgeValue, clientUchite, serverUchite = jk.judgeResult(stContents);
             // 確認用
-            ここがうまくいってない
+            
             console.log("ここ" + afterJudgeValue + clientUchite + serverUchite);
             // responseGenerater.jsにじゃんけんの結果を渡して、結果を反映させたHTMLを返してもらう
             ejR.ejsResponser(res, '../template/result.ejs', 'text/html', clientUchite, serverUchite, afterJudgeValue)
