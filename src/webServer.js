@@ -3,7 +3,6 @@
 var http = require('http');
 var url = require('url');
 var server = http.createServer();
-var request = require('request');
 var qs = require('querystring');
 var path = require("path");
 
