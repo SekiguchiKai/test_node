@@ -59,18 +59,3 @@ exports.judgeResult = function judgeResult(c = 1, s = Math.floor(Math.random() *
     return result, clientUchite, serverUchite;
 }
 
-
-// テストのための仕掛け
-// テスト時に任意のc = クライアントの打ち手、 s = サーバの打ち手を引数にすることができる
-exports.judgeResultTest = function judgeResultTest(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
-    var jk = require("./janken.js")
-
-    // 結果を格納する変数を作成
-    var resultArray; //　名前変えること
-
-    // じゃんけんの結果をresultArray（配列）に代入
-    resultArray = (jk.judgeResult(c, s));
-
-    return resultArray;
-
-}
