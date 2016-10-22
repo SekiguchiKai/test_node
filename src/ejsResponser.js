@@ -15,7 +15,7 @@ exports.ejsResponser = function ejsResponser(res, resource, Content_Type, allRes
     var data = ejs.render(template, {
         result: allResultObj.result,
         clientUchite: allResultObj.clientUchite,
-        serverUchite: allResultObj.clientUchite
+        serverUchite: allResultObj.serverUchite
     });
     res.writeHead(200, {
         'Content-Type': Content_Type
