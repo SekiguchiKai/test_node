@@ -6,16 +6,16 @@ var ejs = require('ejs');
 var webserver = require("./webServer.js");
 
 // レスポンスのための資源を生成し、クライアントに返す // 引数の例(res'../template/index.html','text/html')
-exports.ejsResponser = function ejsResponser(res, resource, Content_Type, clientUchite, serverUchite, result) {
+exports.ejsResponser = function ejsResponser(res, resource, Content_Type, allResultObj) {
 
     console.log("generateResourceが呼び出されました。レスポンスのための資源を生成します");
 
     // HTML読み込み =>読み込まれたら、コールバックでレスポンスまで行う
     var template = fs.readFileSync(resource, 'utf-8');
     var data = ejs.render(template, {
-        clientUchite: clientUchite,
-        serverUchite: serverUchite,
-        result: result
+        result: allResultObj.result,
+        clientUchite: allResultObj.clientUchite,
+        serverUchite: allResultObj.clientUchite
     });
     res.writeHead(200, {
         'Content-Type': Content_Type

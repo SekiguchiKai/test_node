@@ -56,6 +56,12 @@ exports.judgeResult = function judgeResult(c = 1, s = Math.floor(Math.random() *
                 }
 
     console.log(result, clientUchite, serverUchite);
-    return result, clientUchite, serverUchite;
+    // オブジェクトとして各値を返す
+    var allResultObj= {};
+    // オブジェクトの各プロパティに値を追加
+    allResultObj.result = result;
+    allResultObj.clientUchite = clientUchite;
+    allResultObj.serverUchite = serverUchite;
+    return allResultObj;
 }
 

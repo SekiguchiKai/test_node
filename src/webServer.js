@@ -48,9 +48,10 @@ exports.webserver = server.on('request', function (req, res) {
                 var POST = qs.parse(body);
                 console.log(POST);
 
+                var stContents = parseInt(POST.C_uchite);
                 // オブジェクトの値（ここでいうpostの値を取り出す。ここには、クライアントの打ち手が入っている）
                 console.log(stContents + 'POSTのリクエストが届きました');
-                return stContents = parseInt(POST.C_uchite);
+                return stContents;
                 
             });
         }
@@ -59,6 +60,8 @@ exports.webserver = server.on('request', function (req, res) {
 
     // ②urlを解析し、ハンドラを呼び出す関数
     function Handle(req, res, stContents) {
+        //stContentsを確認
+        console.log("stContents" + stContents);
         // urlのpathをuriに代入
         var uri = url.parse(req.url).pathname;
         // cwd()：カレントディレクトリ、uri：path
@@ -75,12 +78,13 @@ exports.webserver = server.on('request', function (req, res) {
 
             // stContentsを実験的に表示
             console.log(stContents + '確認用');
-            var afterJudgeValue, clientUchite, serverUchite = jk.judgeResult(stContents);
-            // 確認用
+            // judgeResultの戻り値（result, clientUchite, serverUchite)を全て格納するオブジェクトを格納するオブジェクトを宣言
+            var allResultObj = jk.judgeResult(stContents);
             
-            console.log("ここ" + afterJudgeValue + clientUchite + serverUchite);
+            console.log("alljudgeResultArray" + allResultObj);
+            
             // responseGenerater.jsにじゃんけんの結果を渡して、結果を反映させたHTMLを返してもらう
-            ejR.ejsResponser(res, '../template/result.ejs', 'text/html', clientUchite, serverUchite, afterJudgeValue)
+            ejR.ejsResponser(res, '../template/result.ejs', 'text/html', allResultObj)
 
         }
     }
