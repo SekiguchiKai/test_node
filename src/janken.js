@@ -3,7 +3,7 @@
 cは、クライアントから送られてくる、sは、デフォルト値を使うこととし、テストの場合のみ変数を与える
 */
 
-//クライアントとサーバのじゃんけんの結果を判定する関数
+// クライアントとサーバのじゃんけんの結果を判定する関数
 exports.judgeResult = function judgeResult(c = 1, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
 
     // クライアントの打ち手に引数を代入
@@ -27,8 +27,36 @@ exports.judgeResult = function judgeResult(c = 1, s = Math.floor(Math.random() *
         result = "引き分けだ！";
     }
 
-    console.log(result);
-    return result;
+    // 表示のための処理
+                // クライアント
+                switch (clientUchite) {
+                    case 0:
+                        clientUchite = "グー"
+                        break;
+                    case 1:
+                        clientUchite = "チョキ"
+                        break;
+                    case 2:
+                        clientUchite = "パー"
+                        break;
+                }
+
+                // 表示のための処理
+                // サーバ
+                switch (serverUchite) {
+                    case 0:
+                        serverUchite = "グー"
+                        break;
+                    case 1:
+                        serverUchite = "チョキ"
+                        break;
+                    case 2:
+                        serverUchite = "パー"
+                        break;
+                }
+
+    console.log(result, clientUchite, serverUchite);
+    return result, clientUchite, serverUchite;
 }
 
 
@@ -37,8 +65,8 @@ exports.judgeResult = function judgeResult(c = 1, s = Math.floor(Math.random() *
 exports.judgeResultTest = function judgeResultTest(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
     var jk = require("./janken.js")
 
-    // 配列結果を格納する配列を作成
-    var resultArray;
+    // 結果を格納する変数を作成
+    var resultArray; //　名前変えること
 
     // じゃんけんの結果をresultArray（配列）に代入
     resultArray = (jk.judgeResult(c, s));

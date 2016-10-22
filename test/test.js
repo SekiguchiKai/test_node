@@ -5,7 +5,7 @@ var chai = require('chai');
 var assert = chai.assert;
 
 // webServer.jsをmoduleとして使用するために
-var jk = require('../janken.js');
+var jk = require('../src/janken.js');
 
 
 // describe()は、複数のテストケースをまとめるためのもの
