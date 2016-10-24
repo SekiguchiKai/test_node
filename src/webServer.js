@@ -13,16 +13,17 @@ var rG = require("./responseGenerater.js");
 // ejsResponser.jsを呼び出すためにrequire
 var ejR = require("./ejsResponser.js");
 
+var stContents;
+
 
 // http.createServerがrequestされたら、
 exports.webserver = server.on('request', function (req, res) {
     // ①parseHttpMethodを呼び出す
-    var SstContents = parseHttpMethod(req, res);
+    parseHttpMethod(req, res);
 
     // ①HTTPのクライアントからびリクエストのメソッドの解析を行う関数
     function parseHttpMethod(req, res) {
         // POSTのクライアント打ち手を格納するための変数
-        var stContents;
 
         // GETかPOSTか調べ、POSTの場合はそのボディを変数に格納する
         if (req.method == 'GET') {
@@ -47,15 +48,16 @@ exports.webserver = server.on('request', function (req, res) {
                 // オブジェクトの値（ここでいうpostの値を取り出す。ここには、クライアントの打ち手が入っている）
                 console.log(stContents + 'POSTのリクエストが届きました');
                 return stContents;
-            });
 
+            });
+    
         };
         
     };
-    console.log("①のstContentsは" + SstContents);
+    console.log("①のstContentsは" + stContents);
 
     // ②Handleを呼び出す
-    Handle(req, res, SstContents);
+    Handle(req, res, stContents);
 
 
     // ②urlを解析し、ハンドラを呼び出す関数
