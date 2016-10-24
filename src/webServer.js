@@ -72,7 +72,7 @@ exports.webserver = server.on('request', function (req, res) {
             // responseGenerater.jsのhtmlGeneratorを呼び出す
             // メモ：index.HTMLなど具体的なファイルはこちらから呼び出す
             // responseGenerater.jsでは、一般的な操作だけを定義し、同じような処理を繰り返させない
-            rG.responseGenerator(res, '../template/index.html', 'text/html'); // res, resource, content_Type
+            rG.responseGenerator(res, './template/index.html', 'text/html'); // res, resource, content_Type
         } else if (uri === "/calcprocess") {
             // janken.jsのjudgeResultを呼び出し、その戻り値を格納
 
@@ -84,7 +84,7 @@ exports.webserver = server.on('request', function (req, res) {
             console.log("alljudgeResultArray" + allResultObj);
 
             // responseGenerater.jsにじゃんけんの結果を渡して、結果を反映させたHTMLを返してもらう
-            ejR.ejsResponser(res, '../template/result.ejs', 'text/html', allResultObj)
+            ejR.ejsResponser(res, './template/result.ejs', 'text/html', allResultObj)
 
         }
     }

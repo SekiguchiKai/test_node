@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    // アプリのルートデジレクトリからwebSever.jsを呼び出しているため、jsファイルから他のファイルを呼び出すときは、アプリのルートディレクトリからのパスになる
+    "start": "node ./src/webServer.js"
   },
   "author": "",
   "license": "ISC",
