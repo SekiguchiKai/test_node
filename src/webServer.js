@@ -16,19 +16,14 @@ var ejR = require("./ejsResponser.js");
 
 // http.createServerがrequestされたら、
 exports.webserver = server.on('request', function (req, res) {
-    // クライアントから送られてきた打ち手を格納するための変数を宣言
-    var stContents;
-
-    // ここで、下の関数を呼び出す（引数にここの関数のreq, resのを渡す）
-
     // ①parseHttpMethodを呼び出す
-    stContents = parseHttpMethod(req, res);
-
-    // ②Handleを呼び出す
-    Handle(req, res, stContents);
+    var SstContents = parseHttpMethod(req, res);
 
     // ①HTTPのクライアントからびリクエストのメソッドの解析を行う関数
-    function parseHttpMethod(req, res, stContents) {
+    function parseHttpMethod(req, res) {
+        // POSTのクライアント打ち手を格納するための変数
+        var stContents;
+
         // GETかPOSTか調べ、POSTの場合はそのボディを変数に格納する
         if (req.method == 'GET') {
             // URLを解析して、URLデーコディングする　（GETはURLでパラメータが来るので）
@@ -48,19 +43,24 @@ exports.webserver = server.on('request', function (req, res) {
                 var POST = qs.parse(body);
                 console.log(POST);
 
-                var stContents = parseInt(POST.C_uchite);
+                stContents = parseInt(POST.C_uchite);
                 // オブジェクトの値（ここでいうpostの値を取り出す。ここには、クライアントの打ち手が入っている）
                 console.log(stContents + 'POSTのリクエストが届きました');
                 return stContents;
-                
             });
-        }
-    }
+
+        };
+        
+    };
+    console.log("①のstContentsは" + SstContents);
+
+    // ②Handleを呼び出す
+    Handle(req, res, SstContents);
 
 
     // ②urlを解析し、ハンドラを呼び出す関数
     function Handle(req, res, stContents) {
-        //stContentsを確認
+        // stContentsを確認
         console.log("stContents" + stContents);
         // urlのpathをuriに代入
         var uri = url.parse(req.url).pathname;
@@ -80,9 +80,9 @@ exports.webserver = server.on('request', function (req, res) {
             console.log(stContents + '確認用');
             // judgeResultの戻り値（result, clientUchite, serverUchite)を全て格納するオブジェクトを格納するオブジェクトを宣言
             var allResultObj = jk.judgeResult(stContents);
-            
+
             console.log("alljudgeResultArray" + allResultObj);
-            
+
             // responseGenerater.jsにじゃんけんの結果を渡して、結果を反映させたHTMLを返してもらう
             ejR.ejsResponser(res, '../template/result.ejs', 'text/html', allResultObj)
 

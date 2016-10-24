@@ -55,12 +55,12 @@ describe('じゃんけんアルゴリズム', function () {
         var resultArray = [];
         for (var i = 0; i < 1001; i++) {
             // クライアントの引数をグーで固定し、janken()を1000回呼び出し
-            resultArray.push(jk.judgeResultTest(0));
+            resultArray.push(jk.judgeResult(0));
         }
         // テストで、janken.jsのjdugeResult関数に処理させて返ってきた結果が正しいかどうかを判断するための関数を格納したオブジェクト
         var judgeAdequacy = {
             returnAdequency: function (result) {
-                // judgeResultTest関数を使用して、テストした勝負の結果を格納する配列
+                // judgeResult関数を使用して、テストした勝負の結果を格納する配列
                 var resultArray = result;
                 // テスト結果が適切かどうかを判断した結果を格納する変数
                 var resultAdequacy = "";
