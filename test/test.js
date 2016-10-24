@@ -7,45 +7,52 @@ var assert = chai.assert;
 // webServer.jsをmoduleとして使用するために
 var jk = require('../src/janken.js');
 
+// judgeResultの戻り値のオブジェクトの中から、resultのみを取り出す関数
+function objConvetor(client, sever) {
+    var objFolder;
+    objFolder = jk.judgeResult(client, sever).result;
+    return objFolder;
+}
+
 
 // describe()は、複数のテストケースをまとめるためのもの
 describe('じゃんけんアルゴリズム', function () {
     // 事前に行う処理
 
     it('「クライアント:グー、サーバ:チョキ」の場合は、クライアントの勝ち', function () {
-        assert.equal(jk.judgeResult(0, 1), "君の勝ちだ！");
+        assert.equal(objConvetor(0, 1), "君の勝ちだ！");
     });
 
     it('クライアント:チョキ、サーバ:パー」の場合は、クライアントの勝ち', function () {
-        assert.equal(jk.judgeResult(1, 2), "君の勝ちだ！");
+        assert.equal(objConvetor(1, 2), "君の勝ちだ！");
     });
 
     it('クライアント:パー、サーバ:グー」の場合は、クライアントの勝ち', function () {
-        assert.equal(jk.judgeResult(2, 0), "君の勝ちだ！");
+        assert.equal(objConvetor(2, 0), "君の勝ちだ！");
     });
 
     it('クライアント:チョキ、サーバ:グー」の場合は、サーバの勝ち', function () {
-        assert.equal(jk.judgeResult(1, 0), "君の負けだ！");
+        assert.equal(objConvetor(1, 0), "君の負けだ！");
     });
 
     it('クライアント:パー、サーバ:チョキ」の場合は、サーバの勝ち', function () {
-        assert.equal(jk.judgeResult(2, 1), "君の負けだ！");
+        assert.equal(objConvetor(2, 1), "君の負けだ！");
     });
 
     it('クライアント:グー、サーバ:パー」の場合は、サーバの勝ち', function () {
-        assert.equal(jk.judgeResult(0, 2), "君の負けだ！");
+        assert.equal(objConvetor(0, 2), "君の負けだ！");
     });
 
     it('クライアント:グー、サーバ:グー」の場合は、引き分け', function () {
-        assert.equal(jk.judgeResult(0, 0), "引き分けだ！");
+        assert.equal(objConvetor(0, 0), "引き分けだ！");
     });
 
     it('クライアント:チョキ、サーバ:チョキ」の場合は、引き分け', function () {
-        assert.equal(jk.judgeResult(1, 1), "引き分けだ！");
+        assert.equal(objConvetor(1, 1), "引き分けだ！");
     });
 
     it('クライアント:パー、サーバ:パー」の場合は、引き分け', function () {
-        assert.equal(jk.judgeResult(2, 2), "引き分けだ！");
+        assert.equal(objConvetor(2, 2), "引き分けだ！");
     });
 
     it('クライアントをグー固定で1000回対戦してみて、勝ち・負け・引き分け のそれぞれが最低1回以上発生するかというテスト', function () {
@@ -55,7 +62,7 @@ describe('じゃんけんアルゴリズム', function () {
         var resultArray = [];
         for (var i = 0; i < 1001; i++) {
             // クライアントの引数をグーで固定し、janken()を1000回呼び出し
-            resultArray.push(jk.judgeResult(0));
+            resultArray.push(objConvetor(0));
         }
         // テストで、janken.jsのjdugeResult関数に処理させて返ってきた結果が正しいかどうかを判断するための関数を格納したオブジェクト
         var judgeAdequacy = {
