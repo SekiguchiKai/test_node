@@ -4,7 +4,10 @@
 */
 
 // クライアントとサーバのじゃんけんの結果を判定する関数
-exports.judgeResult = function judgeResult(c = 1, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
+exports.judgeResult = function judgeResult(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
+
+    // 確認用
+    console.log("janken.jsrが呼び出されました。レスポンスのための資源を生成します");
 
     // クライアントの打ち手に引数を代入
     var clientUchite = c;
