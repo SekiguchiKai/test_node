@@ -23,6 +23,9 @@ https://mochajs.org/
 *chai -3.5.0
 http://chaijs.com/
 
+*nock -9.0.0
+https://github.com/node-nock/nock
+
 ## Usage
 The usage of this application as follows.
 
