@@ -41,9 +41,10 @@ The usage of this application as follows.
 ```git clone [this repository]``` and go in application root directory, hitting the command ```npm install```.
 
 ## specifications
+-----------------
 
 ### webserver.js
------------------
+
 #### 概念(責任)
 * クライアントとサーバとのやりとりを行う
 * 他の各機能を持ったファイルを呼び出す
@@ -63,9 +64,9 @@ The usage of this application as follows.
         →```"/calcProcess"```の場合、janken.js及び、ejsResponser.jsを呼び出す<br>
 
 
-
-### janken.js
 -----------------
+### janken.js
+
 
 #### 概念（責任）
 * クライアントの打ち手とサーバの打ち手を比較して、じゃんけんの勝負の結果をwebserver.jsに返す
@@ -93,9 +94,9 @@ The usage of this application as follows.
     3. プロパティが格納されたオブジェクトを戻り値としてwebServer.jsに返す
 
 
-
-### responseGenerater.js
 -------------------------
+### responseGenerater.js
+
 
 #### 概念(責任)
 * クライアントに対して指定されたファイルを返す
@@ -116,9 +117,9 @@ The usage of this application as follows.
 
 
 
-
-### ejsResponser.js
 ---------------------
+### ejsResponser.js
+
 
 #### 概念(責任)
 * クライアントに対して指定されたejsテンプレートファイルを返す
