@@ -1,5 +1,7 @@
 # test_node
 
+[![CircleCI](https://circleci.com/gh/SekiguchiKai/test_node.svg?style=svg&circle-token=f63e52af97cf652875c98ab5f404b5b64af88913)](https://circleci.com/gh/SekiguchiKai/test_node)
+
 ====
 
 ##Overview
