@@ -10,26 +10,25 @@ This is the application which enables people to play the Janken game online.
 Player choices the his/her hands of rock-paper-scissors, and battale with the server which automatically choice it's hands of rock-paper-scissors.
 
 ## Requirement
-* Node.js -3.10.9   
+* Node.js -3.10.9 <br>
 http://nodejs.jp/nodejs.org_ja/docs/v0.10/
 
-* ejs -2.5.2   
+* ejs -2.5.2<br>
 http://www.embeddedjs.com/
 
 ## Requirement (with test)
-*mocha -3.1.2
+*mocha -3.1.2<br>
 https://mochajs.org/
 
-*chai -3.5.0
+*chai -3.5.0<br>
 http://chaijs.com/
 
-*nock -9.0.0
-https://github.com/node-nock/nock
+
 
 ## Usage
 The usage of this application as follows.
 
-1. Hit the command ```npm run start```` or ```npm start````.
+1. Hit the command ```npm run start``` or ```npm start```.
    The application will start.
   
 2. Visit the http://localhost:8080/ on your browser, you can start JankenGame.
@@ -44,6 +43,7 @@ The usage of this application as follows.
 ## specifications
 
 ### webserver.js
+-----------------
 #### 概念(責任)
 * クライアントとサーバとのやりとりを行う
 * 他の各機能を持ったファイルを呼び出す
@@ -58,13 +58,14 @@ The usage of this application as follows.
 
 * クライアントからのリクエストを解析し、適切な処理を行う関数を呼び出す
      1. 受け取ったリクエストのパスを解析する
-     2. 解析結果を元に、そのパスにバンドルされているハンドラ（関数）を呼び出す
-        →```"/"```の場合、responseGenerator.jsを呼び出す
-        →```"/calcProcess"```の場合、janken.js及び、ejsResponser.jsを呼び出す
+     2. 解析結果を元に、そのパスにバンドルされているハンドラ（関数）を呼び出す<br>
+        →```"/"```の場合、responseGenerator.jsを呼び出す<br>
+        →```"/calcProcess"```の場合、janken.js及び、ejsResponser.jsを呼び出す<br>
 
 
 
 ### janken.js
+-----------------
 
 #### 概念（責任）
 * クライアントの打ち手とサーバの打ち手を比較して、じゃんけんの勝負の結果をwebserver.jsに返す
@@ -94,6 +95,7 @@ The usage of this application as follows.
 
 
 ### responseGenerater.js
+-------------------------
 
 #### 概念(責任)
 * クライアントに対して指定されたファイルを返す
@@ -116,6 +118,7 @@ The usage of this application as follows.
 
 
 ### ejsResponser.js
+---------------------
 
 #### 概念(責任)
 * クライアントに対して指定されたejsテンプレートファイルを返す
