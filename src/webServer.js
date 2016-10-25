@@ -14,8 +14,6 @@ var rG = require("./responseGenerater.js");
 var ejR = require("./ejsResponser.js");
 
 
-
-
 // http.createServerがrequestされたら、
 exports.webserver = server.on('request', function (req, res) {
 
@@ -34,14 +32,14 @@ exports.webserver = server.on('request', function (req, res) {
             req.on('end', function () {
                 var formContents = qs.parse(body)
                 // オブジェクトの値（ここでいうpostの値を取り出す）
-                var stContents = parseInt(formContents.C_uchite)
-                console.log(stContents + 'POSTのリクエストが届きました');
+                var postContent = parseInt(formContents.C_uchite)
+                console.log('POSTのリクエストが届きました、POSTの値は「' + postContent + '」です。');
 
 
                 // judgeResultの戻り値（result, clientUchite, serverUchite)を全て格納するオブジェクトを格納するオブジェクトを宣言
-                var allResultObj = jk.judgeResult(stContents);
+                var allResultObj = jk.judgeResult(postContent);
 
-                console.log("alljudgeResultArray" + allResultObj);
+                console.log("jk.judgeResultの戻り値のオブジェクトは" + toString(allResultObj));
 
                 // responseGenerater.jsにじゃんけんの結果を渡して、結果を反映させたHTMLを返してもらう
                 ejR.ejsResponser(res, './template/result.ejs', 'text/html', allResultObj)
@@ -52,15 +50,11 @@ exports.webserver = server.on('request', function (req, res) {
         }
     }
 
-    // Response
-    // URIで行う処理を分岐させる
     // urlのpathをuriに代入
-
     var uri = url.parse(req.url).pathname;
-    // cwd()：カレントディレクトリ、uri：path
-    var filename = path.join(process.cwd(), uri);
 
 
+    // URIで行う処理を分岐させる
     if (uri === "/") {
         Response["renderHTML"]();
         return;
@@ -68,8 +62,6 @@ exports.webserver = server.on('request', function (req, res) {
         Response["calcProcess"]();
         return;
     }
-
-
 });
 
 // 指定されたポート(8080)でコネクションの受け入れを開始する

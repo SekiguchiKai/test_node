@@ -18,7 +18,6 @@ exports.judgeResult = function judgeResult(c, s = Math.floor(Math.random() * (2 
     // じゃんけんの結果を格納する変数を宣言
     var result;
 
-
     // アルゴリズム
     if ((clientUchite === 0 && serverUchite === 1) || (clientUchite === 1 && serverUchite === 2) || (clientUchite === 2 && serverUchite === 0)) {
         result = "君の勝ちだ！";
@@ -58,7 +57,8 @@ exports.judgeResult = function judgeResult(c, s = Math.floor(Math.random() * (2 
                         break;
                 }
 
-    console.log(result, clientUchite, serverUchite);
+    console.log("オブジェクト格納前のじゃんけんの結果は、" + result + "クライアントの打ち手は" + clientUchite + "サーバの打ち手は" +　serverUchite);
+
     // オブジェクトとして各値を返す
     var allResultObj= {};
     // オブジェクトの各プロパティに値を追加
