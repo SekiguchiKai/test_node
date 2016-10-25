@@ -10,7 +10,7 @@ This is the application which enables people to play the Janken game online.
 Player choices the his/her hands of rock-paper-scissors, and battale with the server which automatically choice it's hands of rock-paper-scissors.
 
 ## Requirement
-* Node.js -3.10.9 <br>
+* Node.js -6.7.0 <br>
 http://nodejs.jp/nodejs.org_ja/docs/v0.10/
 
 * ejs -2.5.2<br>
