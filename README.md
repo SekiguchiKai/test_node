@@ -79,7 +79,7 @@ The usage of this application as follows.
 
 #### 実装
 * webserver.jsから、クライアントの打ち手を受け取る
-    1. ”calcProcess”のリクエストハンドラとして登録しておいたjudgeResult関数がwebServer.jsから呼び出される
+    1. ```”/calcProcess”```のリクエストハンドラとして登録しておいたjudgeResult関数がwebServer.jsから呼び出される
     2. その際ユーザーがブラウザ上で、選択したクライアントの打ち手をwebserver.jsから、引数として受け取る
 
 * サーバの打ち手を自動生成する
