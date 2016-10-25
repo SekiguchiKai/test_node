@@ -31,7 +31,7 @@ The usage of this application as follows.
 1. Hit the command ```npm run start``` or ```npm start```.
    The application will start.
   
-2. Visit the http://localhost:8080/ on your browser, you can start JankenGame.
+2. Visit the ```http://localhost:8080/``` on your browser, you can start JankenGame.
 
 3. The fight screen is displayed, please choice the hands of rock-paper-scissors and click the botton "これで決定!".
 
