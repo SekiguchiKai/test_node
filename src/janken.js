@@ -64,4 +64,3 @@ exports.judgeResult = function judgeResult(c, s = Math.floor(Math.random() * (2 
     allResultObj.serverUchite = serverUchite;
     return allResultObj;
 }
-
