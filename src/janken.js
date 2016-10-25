@@ -56,9 +56,6 @@ exports.judgeResult = function judgeResult(c, s = Math.floor(Math.random() * (2 
                         serverUchite = "パー"
                         break;
                 }
-
-    console.log("オブジェクト格納前のじゃんけんの結果は、" + result + "クライアントの打ち手は" + clientUchite + "サーバの打ち手は" +　serverUchite);
-
     // オブジェクトとして各値を返す
     var allResultObj= {};
     // オブジェクトの各プロパティに値を追加
