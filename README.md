@@ -17,10 +17,10 @@ http://nodejs.jp/nodejs.org_ja/docs/v0.10/
 http://www.embeddedjs.com/
 
 ## Requirement (with test)
-*mocha -3.1.2<br>
+* mocha -3.1.2<br>
 https://mochajs.org/
 
-*chai -3.5.0<br>
+* chai -3.5.0<br>
 http://chaijs.com/
 
 
