@@ -10,8 +10,8 @@ var path = require("path");
 var jk = require("./janken.js");
 // responseGenerater.jsを呼び出すためにrequire
 var rG = require("./responseGenerater.js");
-// ejsResponser.jsを呼び出すためにrequire
-var ejR = require("./ejsResponser.js");
+// ejsResponder.jsを呼び出すためにrequire
+var ejR = require("./ejsResponder.js");
 
 
 // http.createServerがrequestされたら、
@@ -42,7 +42,7 @@ exports.webserver = server.on('request', function (req, res) {
                 console.log("jk.judgeResultの戻り値のオブジェクトは" + toString(allResultObj));
 
                 // responseGenerater.jsにじゃんけんの結果を渡して、結果を反映させたHTMLを返してもらう
-                ejR.ejsResponser(res, './template/result.ejs', 'text/html', allResultObj)
+                ejR.ejsResponder(res, './template/result.ejs', 'text/html', allResultObj)
 
             });
 
