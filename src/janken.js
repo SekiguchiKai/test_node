@@ -3,7 +3,13 @@
    cは、クライアントから送られてくる、sは、デフォルト値を使うこととし、テストの場合のみ変数を与える
 */
 
-// クライアントとサーバのじゃんけんの結果を判定する関数
+
+const Uchite_GU = 0;
+const Uchite_TYOKI = 1;
+const Uchite_PA = 2;
+
+
+// クライアントとサーバのじゃんけんの結果を判定する関数 // 乱数を別に　この関数から呼び出す
 exports.judgeResult = function judgeResult(c, s = Math.floor(Math.random() * (2 - 0 + 1)) + 0) {
 
     // 確認用
@@ -19,10 +25,10 @@ exports.judgeResult = function judgeResult(c, s = Math.floor(Math.random() * (2 
     var result;
 
     // アルゴリズム
-    if ((clientUchite === 0 && serverUchite === 1) || (clientUchite === 1 && serverUchite === 2) || (clientUchite === 2 && serverUchite === 0)) {
+    if ((clientUchite === Uchite_GU && serverUchite === Uchite_TYOKI) || (clientUchite === Uchite_TYOKI && serverUchite === Uchite_PA) || (clientUchite === Uchite_PA && serverUchite === Uchite_GU)) {
         result = "君の勝ちだ！";
     }
-    else if ((clientUchite === 1 && serverUchite === 0) || (clientUchite === 2 && serverUchite === 1) || (clientUchite === 0 && serverUchite === 2)) {
+    else if ((clientUchite === Uchite_TYOKI && serverUchite === Uchite_GU) || (clientUchite === Uchite_PA && serverUchite === Uchite_TYOKI) || (clientUchite === Uchite_GU && serverUchite === Uchite_PA)) {
         result = "君の負けだ！";
     }
     else if (clientUchite === serverUchite) {
@@ -32,13 +38,13 @@ exports.judgeResult = function judgeResult(c, s = Math.floor(Math.random() * (2 
     // 表示のための処理
                 // クライアント
                 switch (clientUchite) {
-                    case 0:
+                    case Uchite_GU:
                         clientUchite = "グー"
                         break;
-                    case 1:
+                    case Uchite_TYOKI:
                         clientUchite = "チョキ"
                         break;
-                    case 2:
+                    case Uchite_PA:
                         clientUchite = "パー"
                         break;
                 }
@@ -46,13 +52,13 @@ exports.judgeResult = function judgeResult(c, s = Math.floor(Math.random() * (2 
                 // 表示のための処理
                 // サーバ
                 switch (serverUchite) {
-                    case 0:
+                    case Uchite_GU:
                         serverUchite = "グー"
                         break;
-                    case 1:
+                    case Uchite_TYOKI:
                         serverUchite = "チョキ"
                         break;
-                    case 2:
+                    case Uchite_PA:
                         serverUchite = "パー"
                         break;
                 }
@@ -64,3 +70,10 @@ exports.judgeResult = function judgeResult(c, s = Math.floor(Math.random() * (2 
     allResultObj.serverUchite = serverUchite;
     return allResultObj;
 }
+
+
+
+
+
+
+
