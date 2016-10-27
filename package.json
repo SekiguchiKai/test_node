@@ -11,7 +11,7 @@
     "start": "node ./src/webServer.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.1.2"

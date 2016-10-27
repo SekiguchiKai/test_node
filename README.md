@@ -63,7 +63,7 @@ The usage of this application as follows.
      1. 受け取ったリクエストのパスを解析する
      2. 解析結果を元に、そのパスにバンドルされているハンドラ（関数）を呼び出す<br>
         →```"/"```の場合、responseGenerator.jsを呼び出す<br>
-        →```"/calcProcess"```の場合、janken.js及び、ejsResponser.jsを呼び出す<br>
+        →```"/calcProcess"```の場合、janken.js及び、ejsResponder.jsを呼び出す<br>
 
 
 -----------------
@@ -120,7 +120,7 @@ The usage of this application as follows.
 
 
 ---------------------
-### ejsResponser.js
+### ejsResponder.js
 
 
 #### 概念(責任)
